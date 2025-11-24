@@ -1,0 +1,32 @@
+<!-- src/app/components/machine-card/machine-card.component.html -->
+<div 
+  appCard
+  [status]="machine.status"
+
+  >
+  <h3>{{ machine.name }}</h3>
+  <p>Status: <strong>{{ machine.status | titlecase }}</strong></p>
+
+  <div *ngIf="machine.status === 'busy'">
+    <p>Current: {{ machine.currentUser }}</p>
+    <p *ngIf="machine.endTime">Ends in: {{ getRemainingMinutes() }} secs</p>
+    <button (click)="adminSkip()" class="small">Skip (admin)</button>
+  </div>
+
+  <div *ngIf="machine.status === 'free'">
+    <p>Free now</p>
+  </div>
+
+  <p>Queue: {{ machine.queue.length }}</p>
+
+  <div *ngIf="machine.queue.length > 0" class="queue-list">
+    <small>Queue list:</small>
+    <ul>
+      <li *ngFor="let q of machine.queue">
+        {{ q }} <button (click)="cancelFromQueue(q)" class="tiny">x</button>
+      </li>
+    </ul>
+  </div>
+
+  <button (click)="onReserveClick()" class="primary">Reserve</button>
+</div>

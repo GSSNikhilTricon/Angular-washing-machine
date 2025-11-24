@@ -1,0 +1,21 @@
+<!-- src/app/components/reserve-modal/reserve-modal.component.html -->
+<div class="overlay">
+  <div class="modal">
+    <h3>Reserve Machine {{ machineId }}</h3>
+
+    <label>
+      Your name
+      <input [(ngModel)]="name" placeholder="e.g. Nikhil" />
+    </label>
+
+    <label>
+      Duration (seconds)
+      <input type="number" [(ngModel)]="minutes" />
+    </label>
+
+    <div class="buttons">
+      <button (click)="submit()" [disabled]="busy" class="primary">Confirm</button>
+      <button (click)="onCancel()">Cancel</button>
+    </div>
+  </div>
+</div>

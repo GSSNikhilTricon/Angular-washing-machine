@@ -1,0 +1,18 @@
+<!-- src/app/components/machine-list/machine-list.component.html -->
+<div class="container">
+  <h1>PG Washers</h1>
+
+  <div class="grid" *ngIf="machines$ | async as machines">
+    <app-machine-card
+      *ngFor="let m of machines"
+      [machine]="m"
+      (reserve)="openReserve($event)"
+    ></app-machine-card>
+  </div>
+
+  <app-reserve-modal
+    *ngIf="showReserveModal && modalMachineId"
+    [machineId]="modalMachineId"
+    (close)="closeModal()"
+  ></app-reserve-modal>
+</div>

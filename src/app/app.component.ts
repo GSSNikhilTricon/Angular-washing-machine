@@ -1,10 +1,10 @@
+// src/app/app.component.ts
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `<app-machine-list></app-machine-list>
+              <app-toast-list></app-toast-list>`,
+  styles: []
 })
-export class AppComponent {
-  title = 'wash-machine-manage';
-}
+export class AppComponent {}
